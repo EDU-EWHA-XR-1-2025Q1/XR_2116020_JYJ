@@ -1,5 +1,5 @@
 sceneSetups:
-- path: Assets/Scenes/SampleScene.unity
+- path: Assets/HW03_2116020_JYJ/HW03_Animation/HW03_Animation_Start.unity
   isLoaded: 1
   isActive: 1
   isSubScene: 0

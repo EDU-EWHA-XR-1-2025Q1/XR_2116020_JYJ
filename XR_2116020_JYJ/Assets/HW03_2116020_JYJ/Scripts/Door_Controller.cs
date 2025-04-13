@@ -1,41 +1,41 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
-/// DoorÀÇ ¾Ö´Ï¸ŞÀÌÅÍ¸¦ ÄÁÆ®·ÑÇÏ´Â Å¬·¡½ºÀÔ´Ï´Ù.
+/// Doorì˜ ì• ë‹ˆë©”ì´í„°ë¥¼ ì»¨íŠ¸ë¡¤í•˜ëŠ” í´ë˜ìŠ¤ì…ë‹ˆë‹¤.
 /// </summary>
 public class Door_Controller : MonoBehaviour
 {
     /// <summary>
-    /// DoorÀÇ Animator
+    /// Doorì˜ Animator
     /// </summary>
     public Animator Animator;
     /// <summary>
-    /// ¹Ù±ùÀÎÁö °¨ÁöÇÒ LaycastÀÇ °Å¸®
+    /// ë°”ê¹¥ì¸ì§€ ê°ì§€í•  Laycastì˜ ê±°ë¦¬
     /// </summary>
     public float rayDistance = 3f;
 
     private void Update()
     {
        
-        /* ½ÇÁ¦ ·¹ÀÌÄ³½ºÆ® ·ÎÁ÷ */
-        Ray InsideRay = new Ray(transform.position, transform.forward);//¾È
+        /* ì‹¤ì œ ë ˆì´ìºìŠ¤íŠ¸ ë¡œì§ */
+        Ray InsideRay = new Ray(transform.position, transform.forward);//ì•ˆ
         RaycastHit InsideHit;
 
         if (Physics.Raycast(InsideRay, out InsideHit, rayDistance))
         {
-            Debug.Log("ÇÃ·¹ÀÌ¾î ¾ÈÀÎ»óÅÂ");
+            Debug.Log("í”Œë ˆì´ì–´ ì•ˆì¸ìƒíƒœ");
             Animator.SetBool("IsOutdoor", false);
         
         }
 
-        Ray OutsideRay = new Ray(transform.position , -transform.forward);//¹Û
+        Ray OutsideRay = new Ray(transform.position , -transform.forward);//ë°–
         RaycastHit OutsideHit;
 
         if (Physics.Raycast(OutsideRay, out OutsideHit, rayDistance))
         {
-            Debug.Log("ÇÃ·¹ÀÌ¾î ¹Ù±ùÀÎ»óÅÂ");
+            Debug.Log("í”Œë ˆì´ì–´ ë°”ê¹¥ì¸ìƒíƒœ");
             Animator.SetBool("IsOutdoor", true);
 
         }
@@ -44,7 +44,7 @@ public class Door_Controller : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         Animator.SetInteger("status", 1);
-        //¸¸¾à ¹Ù±ùÀ¸·Î °¬´Ù¸é
+        //ë§Œì•½ ë°”ê¹¥ìœ¼ë¡œ ê°”ë‹¤ë©´
         
     }
 

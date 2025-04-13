@@ -1,20 +1,20 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
-/// VehicleÀÇ ¿òÁ÷ÀÓÀ» Á¦¾îÇÏ´Â ½ºÅ©¸³Æ®ÀÔ´Ï´Ù.
+/// Vehicleì˜ ì›€ì§ì„ì„ ì œì–´í•˜ëŠ” ìŠ¤í¬ë¦½íŠ¸ì…ë‹ˆë‹¤.
 /// </summary>
 public class Vehicle_Controller : MonoBehaviour
 {
     /// <summary>
-    /// VehicleÀÇ ¾Ö´Ï¸ŞÀÌÅÍ
+    /// Vehicleì˜ ì• ë‹ˆë©”ì´í„°
     /// </summary>
     public Animator Animator;
 
     private void Update()
     {
-        /*Room2µµ´Ş ½Ã, Room1ÇâÇÏµµ·Ï ÀçÁ¶Á¤*/
+        /*Room2ë„ë‹¬ ì‹œ, Room1í–¥í•˜ë„ë¡ ì¬ì¡°ì •*/
         float MyZ = this.transform.position.z;
 
         if (Mathf.Abs(MyZ - (28.79f)) < 0.1f)
@@ -24,22 +24,22 @@ public class Vehicle_Controller : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("ÇÃ·¹ÀÌ¾î Å¾½Â!");
-        //¾Ö´Ï¸ŞÀÌ¼Ç Àç»ı ½ÃÀÛ
+        Debug.Log("í”Œë ˆì´ì–´ íƒ‘ìŠ¹!");
+        //ì• ë‹ˆë©”ì´ì…˜ ì¬ìƒ ì‹œì‘
         Animator.speed = 1f;
         Animator.SetBool("IsRiding", true);
-        Debug.Log("IsRidingÀ» true·Î");
-        //Ãæµ¹´ë»ó À§¿¡ ÅÂ¿ì±â
+        Debug.Log("IsRidingì„ trueë¡œ");
+        //ì¶©ëŒëŒ€ìƒ ìœ„ì— íƒœìš°ê¸°
         other.gameObject.transform.SetParent(this.transform);
         other.gameObject.transform.position = this.transform.position + Vector3.up * 2f;
     }
     private void OnTriggerExit(Collider other)
     {
-        //¾Ö´Ï¸ŞÀÌ¼Ç Àç»ı ÁßÁö
+        //ì• ë‹ˆë©”ì´ì…˜ ì¬ìƒ ì¤‘ì§€
         Animator.speed = 0f;
         Animator.SetBool("IsRiding", false);
-        Debug.Log("IsRidingÀ» false·Î");
-        //´ë»ó Â÷·®¿¡¼­ ³»·ÁÁÖ±â
+        Debug.Log("IsRidingì„ falseë¡œ");
+        //ëŒ€ìƒ ì°¨ëŸ‰ì—ì„œ ë‚´ë ¤ì£¼ê¸°
         other.gameObject.transform.SetParent(null);
     }
 
